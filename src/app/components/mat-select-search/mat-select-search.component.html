@@ -1,0 +1,14 @@
+<mat-form-field appearance="fill">
+    <mat-label>{{label}}</mat-label>
+    <mat-select name="Item" [formControl]="itemCtrl" #matSelect [multiple]="isMultiple">
+        <mat-option>
+            <ngx-mat-select-search
+                [formControl]="listFilterCtrl"
+                [placeholderLabel]="searchPlaceholderLabel"
+            ></ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let item of filteredList | async" [value]="item.value">
+            {{item.label}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
